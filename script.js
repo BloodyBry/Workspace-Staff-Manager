@@ -11,8 +11,8 @@ closeBtn.addEventListener("click", () => {
     modal.style.display = "none"; 
 });
 
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
         modal.style.display = "none";
     }
 });
@@ -26,7 +26,20 @@ addExperienceBtn.addEventListener("click", () => {
     expDiv.classList.add("experience-item");
 
     expDiv.innerHTML = `
-        <label>Company</label>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <label>Company</label>
+            <span class="delete-exp"
+                style="
+                    cursor:pointer;
+                    font-size:18px;
+                    font-weight:bold;
+                    color:#ff4d4d;
+                    margin-left:10px;
+                ">
+                ×
+            </span>
+        </div>
+
         <input type="text" class="exp-company" placeholder="Company name" required>
 
         <label>Role</label>
@@ -37,11 +50,15 @@ addExperienceBtn.addEventListener("click", () => {
 
         <label>To</label>
         <input type="date" class="exp-to">
-        
     `;
+
+    expDiv.querySelector(".delete-exp").addEventListener("click", () => {
+        expDiv.remove();
+    });
 
     experiencesList.appendChild(expDiv);
 });
+
 
 
 
