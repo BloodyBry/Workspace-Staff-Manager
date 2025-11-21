@@ -72,9 +72,24 @@ photoInput.addEventListener("change", function() {
 saveWorkerBtn.addEventListener("click", () => {
     const name = document.getElementById("name").value.trim();
     const role = document.getElementById("role").value;
+    const email = document.getElementById("email").value.trim();
 
-    if (!name || !role) {
+    const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !role || !email) {
         alert("Please fill all required fields.");
+        return;
+    }
+
+    if (!nameRegex.test(name)) {
+        alert("Veuillez Entrer un nom valide");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("Veuillez Entrer un email valide");
         return;
     }
 
@@ -95,11 +110,11 @@ saveWorkerBtn.addEventListener("click", () => {
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            addWorkerToList(name, role, e.target.result, experiences);
+            addWorkerToList(name, role, e.target.result, experiences, email);
         };
         reader.readAsDataURL(file);
     } else {
-        addWorkerToList(name, role, photoURL, experiences);
+        addWorkerToList(name, role, photoURL, experiences, email);
     }
 
     // Renitialiser le form
@@ -110,7 +125,7 @@ saveWorkerBtn.addEventListener("click", () => {
 });
 
 //  add worker to list st afficher leur infos//
-function addWorkerToList(name, role, photoURL, experiences = []) {
+function addWorkerToList(name, role, photoURL, experiences = [], email) {
     const workerDiv = document.createElement("div");
     workerDiv.classList.add("worker-card");
     workerDiv.style.cssText = `
@@ -152,12 +167,14 @@ function addWorkerToList(name, role, photoURL, experiences = []) {
                 <div class="worker-details">
                     <p><strong>${name}</strong></p>
                     <p>${role}</p>
+                    <p>${email}</p>
                 </div>
             </div>
             <div class="worker-experiences">
                 ${expHtml}
             </div>
         `;
+
 
         workerInfoModal.style.display = "flex";
     });
@@ -211,7 +228,6 @@ window.addEventListener('click', (e) => {
 function populateAssignList() {
     assignList.innerHTML = '';
 
-    // Find worker cards in sidebar (they are .worker-card from your existing code)
     const cards = staffList.querySelectorAll('.worker-card');
     if (!cards.length) {
         assignList.innerHTML = '<p>No workers available. Add workers first.</p>';
@@ -293,7 +309,7 @@ function assignWorkerToRoom(worker) {
     container.appendChild(wEl);
 
 
-    
+
     assignModal.style.display = 'none';
 }
 
