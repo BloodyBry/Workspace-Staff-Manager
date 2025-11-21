@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkSphere - Staff Manager</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 
 
    
     <div class="sidebar">
-        <h2>Staff Members</h2>
+        <h2 style="color: rgb(44, 139, 223);">Staff Members</h2>
 
         <button id="addWorkerBtn" class="add-btn">
             Add New Worker
@@ -25,33 +26,45 @@
         <!-- <h1>WorkSphere Staff Manager</h1> -->
         <div class="rooms">
             <div class="item1 conference-room">
-                <p>Conference Room</p>
-                <button id="conference-room" class="plus">+</button>
+                <div class="room-content">
+                    <p>Conference Room</p>
+                    <button id="conference-room" class="plus">+</button>
+                </div>
             </div>
 
             <div class="item2 server-room">
-                <p>Server Room</p>
-                <button id="server-room" class="plus">+</button>
+                <div class="room-content">
+                    <p>Server Room</p>
+                    <button id="server-room" class="plus">+</button>
+                </div>
             </div>
 
             <div class="item3 security-room">
-                <p>Security Room</p>
-                <button id="security-room" class="plus">+</button>
+                <div class="room-content">
+                    <p>Security Room</p>
+                    <button id="security-room" class="plus">+</button>
+                </div>
             </div>
 
             <div class="item4 reception">
-                <p>Reception</p>
-                <button id="reception" class="plus">+</button>
+                <div class="room-content">
+                    <p>Reception</p>
+                    <button id="reception" class="plus">+</button>
+                </div>
             </div>
 
             <div class="item5 staff-room">
-                <p>Staff Room</p>
-                <button id="staff-room" class="plus">+</button>
+                <div class="room-content">
+                    <p>Staff Room</p>
+                    <button id="staff-room" class="plus">+</button>
+                </div>
             </div>
 
             <div class="item6 archives">
-                <p>Archives</p>
-                <button id="archives" class="plus">+</button>
+                <div class="room-content">
+                    <p>Archives</p>
+                    <button id="archives" class="plus">+</button>
+                </div>
             </div>
         </div>
     </div>
@@ -61,7 +74,7 @@
         <div class="modal-content">
 
             <span class="close">&times;</span>
-            <h2>Add New Worker</h2>
+            <h2 style="color: rgb(44, 139, 223);">Add New Worker</h2>
 
             <form id="workerForm">
 
@@ -94,13 +107,21 @@
         </div>
     </div>
 
-    <!-- Worker Info Modal -->
+
     <div id="workerInfoModal" class="modal">
     <div class="modal-content">
         <span id="closeInfoModal" class="close">&times;</span>
-        <h2>Worker Information</h2>
+        <h2 style="text-align: center;">Worker Information</h2>
         <div id="workerInfoContent"></div>
     </div>
+    </div>
+
+    <div id="assignModal" class="modal">
+        <div class="modal-content">
+            <span id="closeAssignModal" class="close">&times;</span>
+            <h2>Select a Worker</h2>
+            <div id="assignList"></div>
+        </div>
     </div>
 
 

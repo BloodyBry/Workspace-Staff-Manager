@@ -2,6 +2,7 @@ body {
     margin: 0;
     display: flex;
     background: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
 }
 
 .main-content{
@@ -121,25 +122,55 @@ input, select {
     padding: 11px;
     display: grid;
 
-    grid-template-columns: repeat(8,1fr);
+    grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(3,1fr);
     grid-template-areas: 
-    ". item1 . . . item2 . item3"
+    /* ". item1 . . . item2 . item3"
     ". item4 . . . . . ."
-    ". . . . . item5 . item6"
+    ". . . . . item5 . item6" */
+    /* ". item1 . item2 item3"
+    ". item4 . . ."
+    ". . . item5 item6" */
+    "item1 . item2 item3"
+    ". . . ."
+    "item4. item5 item6"
     ;
  
 
 }
 
-.item1 {grid-area: item1;}
-.item2 {grid-area: item2;}
-.item3 {grid-area: item3;}
+.item1 {grid-area: item1;
+/* background-color: red; */
+/* opacity: 0.5; */
+display: flex;
+        padding-left: 40px;}
+.item2 {grid-area: item2;
+/* background-color: green; */
+/* opacity: 0.5; */
+display: flex;
+        padding-left: 40px;}
+.item3 {grid-area: item3;
+/* background-color: blue; */
+/* opacity: 0.5; */
+display: flex;
+        padding-left: 40px;}
 .item4 {grid-area: item4;
-        padding-top: 70px;        
+        /* background-color: violet; */
+        /* opacity: 0.5;        */
+        /* margin-bottom: 100px; */
+        display: flex;
+        padding-left: 40px;
 }
-.item5 {grid-area: item5;}
-.item6 {grid-area: item6;}
+.item5 {grid-area: item5;
+/* background-color: yellow; */
+/* opacity: 0.5; */
+display: flex;
+        padding-left: 40px;}
+.item6 {grid-area: item6;
+/* background-color: white; */
+/* opacity: 0.5; */
+display: flex;
+        padding-left: 40px;}
 
 .item1, .item2, .item3, .item4, .item5, .item6{
     color: black;
@@ -171,7 +202,98 @@ input, select {
     transform: scale(0.9);
 }
 
+.experiencesList {
+    background-color: white;
+}
 
 
+.worker-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2563eb;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.worker-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.worker-details p {
+    margin: 2px 0;
+    font-size: 16px;
+    text-align: left;
+}
 
 
+.experience-item input {
+    width: 100%;
+    padding: 6px 8px; 
+    font-size: 13px;  
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+
+#name, #role, #photo {
+    width: 100%;
+    padding: 6px 8px; 
+    font-size: 13px;   
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+
+.room-workers {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.room-worker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    width: fit-content;
+}
+
+.room-worker img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.delete-worker {
+    margin-left: auto;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.room-content {
+    position: relative; 
+    display: inline-block; 
+}
+
+.room-workers {
+    position: absolute;
+    left: 50px;          
+    top: 50%;           
+    transform: translateY(-50%); 
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;      
+}
