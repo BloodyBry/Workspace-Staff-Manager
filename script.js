@@ -51,7 +51,6 @@ addExperienceBtn.addEventListener("click", () => {
     `;
 
 
-
     expDiv.querySelector(".delete-exp").addEventListener("click", () => expDiv.remove());
     experiencesList.appendChild(expDiv);
 });
@@ -68,13 +67,12 @@ photoInput.addEventListener("change", function() {
     reader.readAsDataURL(file);
 });
 
-// Sauvegarder woorker//
 saveWorkerBtn.addEventListener("click", () => {
     const name = document.getElementById("name").value.trim();
     const role = document.getElementById("role").value;
     const email = document.getElementById("email").value.trim();
 
-    const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]{2,50}$/;
+    const nameRegex = /^[a-zA-Z\s]{2,50}$/;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -93,7 +91,6 @@ saveWorkerBtn.addEventListener("click", () => {
         return;
     }
 
-    // Collecter experiences
     const experienceDivs = experiencesList.querySelectorAll(".experience-item");
     const experiences = [];
     experienceDivs.forEach(exp => {
@@ -117,14 +114,13 @@ saveWorkerBtn.addEventListener("click", () => {
         addWorkerToList(name, role, photoURL, experiences, email);
     }
 
-    // Renitialiser le form
+    
     modal.style.display = "none";
     document.getElementById("workerForm").reset();
     photoPreview.classList.add("hidden");
     experiencesList.innerHTML = "";
 });
 
-//  add worker to list st afficher leur infos//
 function addWorkerToList(name, role, photoURL, experiences = [], email) {
     const workerDiv = document.createElement("div");
     workerDiv.classList.add("worker-card");
@@ -309,7 +305,5 @@ function assignWorkerToRoom(worker) {
     container.appendChild(wEl);
 
 
-
     assignModal.style.display = 'none';
 }
-
